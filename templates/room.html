@@ -2,32 +2,57 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Видеочат</title>
+    <title>Комната {{ room_id }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
-    <div class="room-container">
-        <h2 class="room-label">Вы в комнате: <span id="room-code">{{ room_id }}</span></h2>
 
-        <div id="video-wrapper">
-            <div class="video-block">
-                <div class="video-label">Вы</div>
-                <video id="localVideo" autoplay muted playsinline></video>
-            </div>
-            <div class="video-block">
-                <div class="video-label">Собеседник</div>
-                <video id="remoteVideo" autoplay playsinline></video>
-            </div>
+    <!-- <div id="video-container">
+        <div class="video-wrapper">
+            <div class="video-label">Вы</div>
+            <video id="localVideo" autoplay muted playsinline></video>
         </div>
-
-        <div class="controls">
-            <button id="toggleMic" class="control-btn active">🎤</button>
-            <button id="toggleCam" class="control-btn active">📷</button>
-            <button id="leaveRoom" class="exit-btn">🚪</button>
+        <div class="video-wrapper">
+            <div class="video-label">Собеседник</div>
+            <video id="remoteVideo" autoplay playsinline></video>
         </div>
     </div>
+     -->
+     
+    
+    <div class="container">
+        <h2>Вы в комнате: <code>{{ room_id }}</code></h2>
 
-    <script src="{{ url_for('static', filename='room.js') }}"></script>
+        <div id="video-container">
+            <video id="localVideo" autoplay muted playsinline></video>
+            <video id="remoteVideo" autoplay playsinline></video>
+        </div>
+
+        <!-- <div id="video-container" class="single">
+            <video id="localVideo" autoplay muted playsinline></video>
+            <video id="remoteVideo" class="hidden" autoplay playsinline></video>
+        </div> -->
+
+        <div class="controls">
+            <button id="toggleMic" class="control-btn active" title="Микрофон"><i class="fas fa-microphone"></i></button>
+            <button id="toggleCam" class="control-btn active" title="Камера"><i class="fas fa-video"></i></button>
+            <button onclick="window.location.href='/'" class="exit-btn" title="Выйти"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+
+    </div>
+
+    <!-- <video id="localVideo" autoplay playsinline muted></video>
+<video id="remoteVideo" autoplay playsinline></video>
+ -->
+
+    <script>
+        const roomId = "{{ room_id }}";
+    </script>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='room.js') }}"></script>
+
 </body>
 </html>

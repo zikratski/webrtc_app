@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="hero">
+        <h1 class="title">🎥 WebRTC Connect</h1>
+        <div class="card">
+            <input id="roomInput" type="text" placeholder="Введите ID комнаты">
+            <button onclick="joinRoom()"><i class="fas fa-sign-in-alt"></i> Присоединиться</button>
+            <button onclick="createRoom()" class="create-btn"><i class="fas fa-plus-circle"></i> Создать комнату</button>
+        </div>
+    </div>
+
+    <script>
+        function joinRoom() {
+            const roomId = document.getElementById("roomInput").value;
+            if (roomId.trim()) {
+                window.location.href = `/room/${roomId}`;
+            }
+        }
+
+        function createRoom() {
+            window.location.href = "/create";
+        }
+    </script>
+</body>
+</html>
