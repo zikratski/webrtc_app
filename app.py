@@ -93,6 +93,8 @@
 # if __name__ == '__main__':
 #     socketio.run(app, debug=True)
 
+import os
+
 
 from flask import Flask, render_template, redirect, url_for, request
 from flask_socketio import SocketIO, join_room, leave_room, emit
@@ -161,7 +163,10 @@ def handle_ice_candidate(data):
     emit('ice-candidate', data, room=data['room'], include_self=False)
 
 
-if __name__ == '__main__':
-    socketio.run(app, debug=True)
+# if __name__ == '__main__':
+#     socketio.run(app, debug=True)
 
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    socketio.run(app, host="0.0.0.0", port=port)
