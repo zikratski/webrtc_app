@@ -9,19 +9,6 @@
 </head>
 <body>
 
-    <!-- <div id="video-container">
-        <div class="video-wrapper">
-            <div class="video-label">Вы</div>
-            <video id="localVideo" autoplay muted playsinline></video>
-        </div>
-        <div class="video-wrapper">
-            <div class="video-label">Собеседник</div>
-            <video id="remoteVideo" autoplay playsinline></video>
-        </div>
-    </div>
-     -->
-     
-    
     <div class="container">
         <h2>Вы в комнате: <code>{{ room_id }}</code></h2>
 
@@ -30,11 +17,6 @@
             <video id="remoteVideo" autoplay playsinline></video>
         </div>
 
-        <!-- <div id="video-container" class="single">
-            <video id="localVideo" autoplay muted playsinline></video>
-            <video id="remoteVideo" class="hidden" autoplay playsinline></video>
-        </div> -->
-
         <div class="controls">
             <button id="toggleMic" class="control-btn active" title="Микрофон"><i class="fas fa-microphone"></i></button>
             <button id="toggleCam" class="control-btn active" title="Камера"><i class="fas fa-video"></i></button>
@@ -42,10 +24,6 @@
         </div>
 
     </div>
-
-    <!-- <video id="localVideo" autoplay playsinline muted></video>
-<video id="remoteVideo" autoplay playsinline></video>
- -->
 
     <script>
         const roomId = "{{ room_id }}";
