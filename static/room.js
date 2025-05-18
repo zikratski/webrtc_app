@@ -1,5 +1,4 @@
 const socket = io();
-// const roomId = window.location.pathname.split("/").pop();
 
 let localStream;
 let remoteStream;
@@ -101,13 +100,10 @@ function handleIceCandidate(data) {
     peerConnection.addIceCandidate(candidate);
 }
 
-
-
 socket.on('room-not-found', () => {
     alert("Комната не существует или уже закрыта.");
     window.location.href = '/';
 });
-
 
 document.getElementById('toggleMic').addEventListener('click', () => {
     const micBtn = document.getElementById('toggleMic');
@@ -132,40 +128,4 @@ document.getElementById('toggleCam').addEventListener('click', () => {
         ? '<i class="fas fa-video"></i>'
         : '<i class="fas fa-video-slash"></i>';
 });
-
-
-// peerConnection.ontrack = (event) => {
-//     console.log("📹 Получен удаленный трек");
-//     if (!remoteStream) {
-//         remoteStream = new MediaStream();
-//         remoteVideo.srcObject = remoteStream;
-//     }
-//     remoteStream.addTrack(event.track);
-
-//     // Показываем второй видеоэлемент
-//     remoteVideo.classList.remove("hidden");
-
-//     // Переключаем layout
-//     document.getElementById("video-container").classList.remove("single");
-//     document.getElementById("video-container").classList.add("dual");
-// };
-
-
-// 🚀 Старт
 init();
-// 🔘 Обработчики кнопок
-// document.getElementById('toggleMic').addEventListener('click', () => {
-//     if (!localStream) return;
-//     localStream.getAudioTracks().forEach(track => {
-//         track.enabled = !track.enabled;
-//         console.log(`🎙️ Микрофон: ${track.enabled ? 'вкл' : 'выкл'}`);
-//     });
-// });
-
-// document.getElementById('toggleCam').addEventListener('click', () => {
-//     if (!localStream) return;
-//     localStream.getVideoTracks().forEach(track => {
-//         track.enabled = !track.enabled;
-//         console.log(`📷 Камера: ${track.enabled ? 'вкл' : 'выкл'}`);
-//     });
-// });
